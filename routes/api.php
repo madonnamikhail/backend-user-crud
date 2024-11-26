@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\User\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,8 +20,11 @@ Route::middleware('auth:api')->group(function () {
     // Route::get('/test', function () {
     //     return 'test';
     // });
+    Route::apiResource('users', UserController::class);
+    Route::post('users/{id}', [UserController::class, 'update']);
 });
 
 Route::post('login', [AuthController::class, 'login']);
 Route::post('/refresh-token', [AuthController::class, 'refreshToken']);
+
 

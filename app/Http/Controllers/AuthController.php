@@ -32,7 +32,7 @@ class AuthController extends Controller
     public function refreshToken(Request $request)
     {
         try {
-            $refreshToken = $request->bearerToken(); // Extract the refresh token from the Authorization header
+            $refreshToken = $request->bearerToken();
             $newToken = auth('api')->setToken($refreshToken)->refresh();
 
             return response()->json([
